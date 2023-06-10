@@ -1,0 +1,18 @@
+#stats {
+	margin-top: 1rem;
+	border: 1px solid #404040;
+	border-radius: 0.25rem;
+	display: none;
+}
+#stats div{
+	line-height: 2.5rem;
+}
+#loses{
+	border: none;
+}
+#winnumber.happened{
+	color: #28a028;
+}
+#losenumber.happened{
+	color: #a02828;
+}

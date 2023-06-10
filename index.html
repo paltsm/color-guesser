@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>color guess</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="game.css">
+	<link rel="stylesheet" href="stats.css">
+	<link rel="stylesheet" href="dialog.css">
+	<script src="script.js" type="module" defer></script>
+</head>
+<body>
+
+	<dialog id="tutorial">
+		<h1>how to play color guesser</h1>
+		<p>
+			Guess the color of the tile background.<br> The guess is between 0 and 255, in increments of 10 for each color. You only have 6 guesses.
+		</p>
+		<button onclick="tutorial.close()" class="closetutorial button">close</button>
+	</dialog>
+
+	<main>
+		<section id="game">
+
+			<div id="color" class="title">
+				<h1>color guesser</h1>
+				<button onclick="tutorial.showModal()" class="opentutorial">how to play</button>
+			</div>
+
+			<div>
+				<input type="number" placeholder="red" id="red">
+			</div>
+
+			<div>
+				<input type="number" placeholder="green" id="green">
+			</div>
+
+			<div>
+				<input type="number" placeholder="blue" id="blue">
+			</div>
+
+			<div id="guessdiv">
+				<button class="button" id="guess">guess</button>
+				<p>tries: <span id="tries-left">6</span></p>
+			</div>
+
+		</section>
+		
+		<section id="stats">
+
+			<div class="title">
+				<h1>stats</h1>
+			</div>
+
+			<div id="wins">wins: <span id="winnumber">0</span></div>
+
+			<div id="loses">loses: <span id="losenumber">0</span></div>
+
+		</section>
+	</main>
+</body>
+</html>

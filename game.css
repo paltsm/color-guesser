@@ -1,0 +1,78 @@
+#game {
+	border: 1px solid #404040;
+	border-radius: 0.25rem;
+	overflow: hidden;
+}
+
+#color {
+	justify-content: space-between;
+}
+
+.opentutorial {
+	background-color: transparent;
+	border: none;
+	color: white;
+	text-decoration: 1px solid underline;
+	text-shadow: black 1px 1px 1px;
+}
+
+#game div:not(:first-child):not(:last-child) {
+	position: relative;
+}
+
+#game div:not(:first-child):not(:last-child)::after {
+	content: "";
+	position: absolute;
+	right: 0.5rem;
+	text-align: center;
+	width: 1rem;
+	font-size: 1.5rem;
+}
+
+#game div:not(:first-child):not(:last-child).lower::after {
+	content: "↑";
+}
+
+#game div:not(:first-child):not(:last-child).higher::after {
+	content: "↓";
+}
+
+#game div:not(:first-child):not(:last-child).correct::after {
+	content: "=";
+}
+
+#game input {
+	background-color: transparent;
+	color: white;
+	height: 100%;
+	width: 100%;
+	border: none;
+}
+#game input:disabled{
+	color: #606060;
+	text-decoration: line-through 1px #808080;
+}
+
+#game div:has(input:focus){
+	border-bottom: 1px solid red;
+}
+#game input:focus{
+	outline: none;
+}
+
+input[type=number] {
+	appearance: textfield;
+}
+
+#guessdiv {
+	display: flex;
+	justify-content: space-between;
+	height: 2.5rem;
+	padding: 0.5rem;
+	align-items: center;
+	border: none;
+}
+#guess:disabled{
+	background-color: #282828;
+	box-shadow: inset #800000 0 0 1rem;
+}
