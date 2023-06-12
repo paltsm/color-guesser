@@ -36,3 +36,13 @@ div {
 	padding: 0 0.5rem;
 	text-shadow: black 1px 1px 1px;
 }
+#link-to-code{
+	position: absolute;
+	bottom: 1rem;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: fit-content;
+
+}

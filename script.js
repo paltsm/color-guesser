@@ -48,6 +48,8 @@ GUESS.addEventListener("click", () => {
 	checkinput(GREEN, color.green)
 	checkinput(BLUE, color.blue)
 
+	previoustry(RED, GREEN, BLUE)
+
 	// win
 
 	if (RED.parentElement.classList.contains("correct") && GREEN.parentElement.classList.contains("correct") && BLUE.parentElement.classList.contains("correct")) {
@@ -115,4 +117,37 @@ function disableinputs() {
 	RED.disabled = true
 	GREEN.disabled = true
 	BLUE.disabled = true
+}
+function previoustry(red, green, blue) {
+	// 1 input
+	// 2(elozo) input
+	// 3 (elozo elozo) input
+	// 4 (elozo elozo) input
+	// 5 (elozo elozo) input
+	let style = document.createElement('style');
+
+	style.textContent = `
+	#reddiv::before {
+		content: "${red.value}";
+		position: absolute;
+		left: 0;
+		font-size: 0.6rem;
+		color: #808080;
+	}
+	#greendiv::before {
+		content: "${green.value}";
+		position: absolute;
+		left: 0;
+		font-size: 0.6rem;
+		color: #808080;
+	}
+	#bluediv::before {
+		content: "${blue.value}";
+		position: absolute;
+		left: 0;
+		font-size: 0.6rem;
+		color: #808080;
+	}`;
+	document.head.appendChild(style);
+
 }
