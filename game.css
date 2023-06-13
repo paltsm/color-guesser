@@ -53,9 +53,6 @@
 	text-decoration: line-through 1px #808080;
 }
 
-#game div:has(input:focus){
-	border-bottom: 1px solid red;
-}
 #game input:focus{
 	outline: none;
 }
