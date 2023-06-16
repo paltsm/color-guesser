@@ -5,7 +5,10 @@
 	display: none;
 }
 #stats div{
-	line-height: 2.5rem;
+	padding: 0 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
 }
 #loses{
 	border: none;

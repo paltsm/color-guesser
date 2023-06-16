@@ -3,6 +3,9 @@ import { todayscolor } from "./todays-color.js";
 
 let color = await todayscolor()
 let tries = 6
+let above = { "red": 300, "green": 300, "blue": 300 }
+let below = { "red": 0, "green": 0, "blue": 0 }
+
 
 // cookies
 
@@ -48,7 +51,7 @@ GUESS.addEventListener("click", () => {
 	checkinput(GREEN, color.green)
 	checkinput(BLUE, color.blue)
 
-	previoustry(RED, GREEN, BLUE)
+	// previoustry(RED, GREEN, BLUE, color)
 
 	// win
 
@@ -90,26 +93,62 @@ function isinputnumber(c) {
 	c.addEventListener("input", () => {
 		if (/^\d+$/.test(c.value) == false) {
 			c.value = ""
-		} else if (c.value > 255) {
-			c.value = 255
+		} else if (c.value > 250) {
+			c.value = 250
 		}
 	})
 }
 
 // is input lower/higher/correct
 
-function checkinput(input, todays) {
-	input.parentElement.classList = ""
-	if (todays > input.value) {
-		input.parentElement.classList.add("lower")
-	}
-	else if (todays < input.value) {
-		input.parentElement.classList.add("higher")
-	}
-	else {
-		input.parentElement.classList.add("correct")
-	}
-}
+// function checkinput(input, todays) {
+// 	input.parentElement.classList = ""
+// 	let style = document.getElementById("prev")
+// 	let funcabove
+// 	let funcbelow
+
+// 	if (input.parentElement.id == "reddiv") {
+// 		funcabove = above.red
+// 		funcbelow = below.red
+// 	}
+
+// 	if (input.parentElement.id == "greendiv") {
+// 		funcabove = above.green
+// 		funcbelow = below.green
+// 	}
+// 	if (input.parentElement.id == "bluediv") {
+// 		funcabove = above.blue
+// 		funcbelow = below.blue
+// 	}
+
+// 	if (todays > input.value) {
+
+// 		input.parentElement.classList.add("below")
+
+// 		if (parseInt(input.value) > funcbelow) {
+// 			funcbelow = input.value
+// 			style.innerHTML += `
+// 			.previoustry::before {
+// 				content: "${funcbelow}";
+// 			}`
+// 		}
+// 	}
+// 	else if (todays < input.value) {
+
+// 		input.parentElement.classList.add("above")
+
+// 		if (parseInt(input.value) < funcabove) {
+// 			funcabove = input.value
+// 			style.innerHTML += `
+// 			.previoustry::after {
+// 				content: "${funcabove}";
+// 			}`
+// 		}
+// 	}
+// 	else {
+// 		input.parentElement.classList.add("correct")
+// 	}
+// }
 
 // disable inputs
 
@@ -118,36 +157,92 @@ function disableinputs() {
 	GREEN.disabled = true
 	BLUE.disabled = true
 }
-function previoustry(red, green, blue) {
-	// 1 input
-	// 2(elozo) input
-	// 3 (elozo elozo) input
-	// 4 (elozo elozo) input
-	// 5 (elozo elozo) input
-	let style = document.createElement('style');
+// function previoustry(red, green, blue, color) {
 
-	style.textContent = `
-	#reddiv::before {
-		content: "${red.value}";
-		position: absolute;
-		left: 0;
-		font-size: 0.6rem;
-		color: #808080;
-	}
-	#greendiv::before {
-		content: "${green.value}";
-		position: absolute;
-		left: 0;
-		font-size: 0.6rem;
-		color: #808080;
-	}
-	#bluediv::before {
-		content: "${blue.value}";
-		position: absolute;
-		left: 0;
-		font-size: 0.6rem;
-		color: #808080;
-	}`;
-	document.head.appendChild(style);
+// 	let style = document.getElementById("prev");
 
+// 	// if (input.parentElement.classList.console)
+
+// 	if (above.red > parseInt(red.value) && red.value > color.red) {
+// 		console.log(above.red, red.value, color.red)
+// 		above.red = red.value
+// 		style.innerHTML += `
+// 		#reddiv .previoustry::before {
+// 			content: "${above.red}";
+// 		}`
+// 	}
+// 	if (below.red < parseInt(red.value) && red.value < color.red) {
+// 		console.log(below.red, red.value, color.red)
+// 		below.red = red.value
+// 		style.innerHTML += `
+// 		#reddiv .previoustry::after {
+// 			content: "${below.red}";
+// 		}`
+// 	}
+
+// 	// burh
+
+// 	if (above.green > green.value && green.value > color.green) {
+// 		console.log(above.green, green.value, color.green)
+// 		above.green = green.value
+// 		style.innerHTML += `
+// 		#greendiv .previoustry::before {
+// 			content: "${above.green}";
+// 		}`
+// 	}
+// 	if (below.green < green.value && green.value < color.green) {
+// 		console.log(below.green, green.value, color.green)
+// 		below.green = green.value
+// 		style.innerHTML += `
+// 		#greendiv .previoustry::after {
+// 			content: "${below.green}";
+// 		}`
+// 	}
+// 	if (above.blue > blue.value && blue.value > color.blue) {
+// 		console.log(above.blue, blue.value, color.blue)
+// 		above.blue = blue.value
+// 		style.innerHTML += `
+// 		#bluediv .previoustry::before {
+// 			content: "${above.blue}";
+// 		}`
+// 	}
+// 	if (below.blue < blue.value && blue.value < color.blue) {
+// 		console.log(below.blue, blue.value, color.blue)
+// 		below.blue = blue.value
+// 		style.innerHTML += `
+// 		#bluediv .previoustry::after {
+// 			content: "${below.blue}";
+// 		}`
+// 	}
+// 	document.head.appendChild(style);
+
+// }
+function checkinput(input, todays) {
+
+	input.parentElement.classList = "inputdiv"
+	let prev = input.previousElementSibling;
+	console.log(prev)
+
+	if (todays > input.value) {
+		input.parentElement.classList.add("below")
+		if (parseInt(input.value) > prev.dataset.below) {
+			prev.setAttribute("data-below", input.value)
+		}
+	}
+
+	else if (todays < input.value) {
+		input.parentElement.classList.add("above")
+		if (parseInt(input.value) < prev.dataset.above || prev.dataset.above == "") {
+			prev.setAttribute("data-above", input.value)
+		}
+	}
+
+	else {
+		input.parentElement.classList.add("correct")
+	}
+
+	// input.parentelement
+	// span
+	// if (prev < input < color)
+	//   style
 }

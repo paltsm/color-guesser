@@ -9,13 +9,14 @@
 	<link rel="stylesheet" href="stats.css">
 	<link rel="stylesheet" href="dialog.css">
 	<script src="script.js" type="module" defer></script>
+	<style id="prev"></style>
 </head>
 <body>
 
 	<dialog id="tutorial">
 		<h1>how to play color guesser</h1>
 		<p>
-			Guess the color of the tile background.<br> The guess is between 0 and 255, in increments of 10 for each color. You only have 6 guesses.
+			Guess the color of the title's background above.<br> The guess is between 0 and 250, in increments of 10 for each color. You only have 6 guesses.
 		</p>
 		<button onclick="tutorial.close()" class="closetutorial button">close</button>
 	</dialog>
@@ -23,23 +24,23 @@
 	<main>
 		<section id="game">
 
-			<div id="color" class="title">
+			<div id="color">
 				<h1>color guesser</h1>
 				<button onclick="tutorial.showModal()" class="opentutorial">how to play</button>
 			</div>
 
-			<div id="reddiv">
-				<span class="previoustry"></span>
+			<div class="inputdiv">
+				<span class="previoustry" data-above="" data-below=""></span>
 				<input type="number" placeholder="red" id="red">
 			</div>
 
-			<div id="greendiv">
-				<span class="previoustry"></span>
+			<div class="inputdiv">
+				<span class="previoustry" data-above="" data-below=""></span>
 				<input type="number" placeholder="green" id="green">
 			</div>
 
-			<div id="bluediv">
-				<span class="previoustry"></span>
+			<div class="inputdiv">
+				<span class="previoustry" data-above="" data-below=""></span>
 				<input type="number" placeholder="blue" id="blue">
 			</div>
 
@@ -56,9 +57,9 @@
 				<h1>stats</h1>
 			</div>
 
-			<div id="wins">wins: <span id="winnumber">0</span></div>
+			<div id="wins">wins:<span id="winnumber">0</span></div>
 
-			<div id="loses">loses: <span id="losenumber">0</span></div>
+			<div id="loses">loses:<span id="losenumber">0</span></div>
 
 		</section>
 		<a id="link-to-code" href="https://github.com/paltsm/color-guesser/" target="_blank">code</a>

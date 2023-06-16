@@ -5,7 +5,11 @@
 }
 
 #color {
+	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	padding: 0 0.5rem;
+	text-shadow: black 1px 1px 1px;
 }
 
 .opentutorial {
@@ -16,28 +20,29 @@
 	text-shadow: black 1px 1px 1px;
 }
 
-#game div:not(:first-child):not(:last-child) {
+#game .inputdiv {
 	position: relative;
 }
 
-#game div:not(:first-child):not(:last-child)::after {
+#game .inputdiv::after {
 	content: "";
 	position: absolute;
-	right: 0.5rem;
+	right: 1rem;
 	text-align: center;
 	width: 1rem;
 	font-size: 1.5rem;
+	line-height: 1.5;
 }
 
-#game div:not(:first-child):not(:last-child).lower::after {
+#game .inputdiv.below::after {
 	content: "↑";
 }
 
-#game div:not(:first-child):not(:last-child).higher::after {
+#game .inputdiv.above::after {
 	content: "↓";
 }
 
-#game div:not(:first-child):not(:last-child).correct::after {
+#game .inputdiv.correct::after {
 	content: "=";
 }
 
@@ -47,29 +52,63 @@
 	height: 100%;
 	width: 100%;
 	border: none;
+	padding: 1rem;
 }
-#game input:disabled{
+
+#game input:disabled {
 	color: #606060;
 	text-decoration: line-through 1px #808080;
 }
 
-#game input:focus{
+#game input:focus {
 	outline: none;
 }
 
-input[type=number] {
+#game input::-webkit-inner-spin-button,
+#game input::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+#game input {
+	-moz-appearance: textfield;
+	/* Firefox */
 	appearance: textfield;
 }
 
 #guessdiv {
 	display: flex;
 	justify-content: space-between;
-	height: 2.5rem;
-	padding: 0.25rem;
+	/* height: 2.5rem; */
+	padding: 0 0.5rem;
 	align-items: center;
 	border: none;
 }
-#guess:disabled{
+
+#guess:disabled {
 	background-color: #282828;
 	box-shadow: inset #800000 0 0 1rem;
+}
+
+.previoustry {
+	--data-above: attr(data-above);
+	--data-below: attr(data-below);
+}
+
+.previoustry::before,
+.previoustry::after {
+	position: absolute;
+	left: 1.25rem;
+	font-size: 0.5rem;
+	color: #808080;
+}
+
+.previoustry::before {
+	content: var(--data-above);
+	top: 0;
+}
+
+.previoustry::after {
+	content: var(--data-below);
+	bottom: 0;
 }
